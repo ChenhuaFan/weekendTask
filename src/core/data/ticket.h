@@ -39,4 +39,4 @@ ticket_t_p insert_new_ticket(ticket_t_p tickets);
 
 // io
 void ticket_write(ticket_t_p tickets);
-ticket_t_p ticket_read(ticket_t_p tickets);
+void ticket_read(ticket_t_p tickets);
