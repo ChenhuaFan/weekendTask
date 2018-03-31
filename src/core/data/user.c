@@ -75,21 +75,16 @@ user_t_p get_user_by_id(user_t_p users, key_t id) {
 
 //删除制定ID用户
 key_t delete_user_by_id(user_t_p users, key_t id) {
-    user_t_p p,temp = users;
-    while(temp->next != NULL || temp->id != id) {
-        temp = temp->next;
+   
+    user_t_p p = users;    
+    while (p != NULL && p->id != id) {
+        p = p->next;
     }
-    if(temp->id == id) {
-        printf("%d\n",temp->id);
-        // temp = p->next;
-        // p->next = NULL;
-        // free(p);
-        return id;
-    } /*else if(temp == NULL) {
-        printf("未找到该用户");
-    }*/
-    
-
+    user_t_p temp = p->next;
+    p->next = temp->next;    
+    free(temp);    
+    temp = NULL;    
+    return id;
 }
 
 //添加用户
