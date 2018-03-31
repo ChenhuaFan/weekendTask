@@ -116,8 +116,7 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
     printf("2. 删除彩票\n");
     printf("3. 查询彩票\n");
     printf("4. 彩票排序\n");
-    printf("5. 彩票状态查询\n");
-    printf("6. 注销\n");
+    printf("5. 注销\n");
     scanf("%d", &op);
     switch(op){
         case(1): {
@@ -138,11 +137,17 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
             break;
         }
         case(2): {
-            index_tickets = get_ticket_by_id();
+            int type;
+            printf("您想删除哪一款彩票\n");
+            scanf("%d", &type);
+            index_tickets = get_ticket_by_type(init_tickets, type);
+            delete_ticket_by_id(init_tickets, index_tickets->id);
+            printf("删除成功! \n");
             break;
         }
         case(3): {
-
+            // 循环显示所有节点信息
+            
             break;
         }
         case(4): {
@@ -150,10 +155,6 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
             break;
         }
         case(5): {
-            
-            break;
-        }
-        case(6): {
             index_user = NULL;
             return;
             break;
