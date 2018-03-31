@@ -11,11 +11,47 @@ user_t_p create_users(void) {
     user_t_p user_node=NULL;
     user_node = (user_t_p)malloc(sizeof(user_t));
     if(user_node==NULL) {
-        printf("CREATE FAILED!");
         exit(1);        
     }
     user_node->next=NULL;
     return user_node;
+}
+
+// 查找特定账号密码的用户
+user_t_p user_auth(user_t_p users, phone_t phone, pw_t pw) {
+    user_t_p p = users;
+    do {
+       if(p->phone == phone && p->pw == pw) {
+            return p;
+        }
+        p=p->next;
+    }
+    while(p->next != NULL);
+    return NULL;
+}
+
+// 得到最后的用户ID号
+key_t get_last_user_Id(user_t_p users)
+{
+    user_t_p P = users;
+    while (P->next != NULL)
+    {
+        P = P->next;
+    }
+    return P->id;
+}
+
+//根据手机号查找用户
+user_t_p get_user_by_phone(user_t_p users, phone_t phone) {
+    user_t_p p = users;
+    do {
+       if(p->phone == phone) {
+            return p;
+        }
+        p=p->next;
+    }
+    while(p->next != NULL);
+    return NULL;
 }
 
 //根据Id查找用户

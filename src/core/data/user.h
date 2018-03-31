@@ -21,6 +21,9 @@ typedef struct __user__
 // 创建新的用户链表
 user_t_p create_users(void);
 
+// 查找特定账号密码的用户
+user_t_p user_auth(user_t_p users, phone_t phone, pw_t pw);
+
 // 通过用户ID 得到用户
 user_t_p get_user_by_id(user_t_p users, key_t id);
 
@@ -32,4 +35,4 @@ user_t_p insert_new_user(user_t_p users);
 
 // io
 void user_write(user_t_p users);
-user_t_p user_read(user_t_p users);
+void user_read(user_t_p users);
