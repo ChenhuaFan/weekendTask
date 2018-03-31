@@ -15,7 +15,7 @@ order_t_p index_order;
 void registe(user_t_p init_users, user_t_p index_user);
 void login(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_users, user_t_p index_user, order_t_p init_order, order_t_p index_order);
 void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_users, user_t_p index_user, order_t_p init_order, order_t_p index_order);
-void common_user(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_users, user_t_p index_user, order_t_p init_order, order_t_p index_order);
+void commen_user(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_users, user_t_p index_user, order_t_p init_order, order_t_p index_order);
 
 // 次要功能声明
 
@@ -92,12 +92,8 @@ void registe(user_t_p init_users, user_t_p index_user)
     scanf("%d %d", &phone, &pw);
     printf("%p\n", index_user);
     user_t_p temp = get_user_by_phone(init_users, phone);
-    if(temp == NULL) {
-        printf("NULL POINTER!");
-    }
     if(temp == NULL){
         // 没有注册过
-        printf("%p | %p\n", index_user, temp);
         index_user->id = (get_last_user_Id(init_users) + 1);
         index_user->phone = phone;
         index_user->pw = pw;
@@ -122,13 +118,15 @@ void login(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
         printf("账户认证失败\n");
         return;
     } else {
-        printf("欢迎您 %d", temp->phone);
+        printf("欢迎您 %d\n", temp->phone);
         index_user = temp;
         if(index_user->phone == 123456)
         {
             // 管理员
+            admin(init_tickets, index_tickets, init_users, index_user, init_order, index_order);
         } else {
             // 普通用户
+            commen_user(init_tickets, index_tickets, init_users, index_user, init_order, index_order);
         }
         return;
     }
@@ -195,23 +193,24 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
 void commen_user(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_users, user_t_p index_user, order_t_p init_order, order_t_p index_order)
 {
     int op;
-    printf("欢迎您，%d。您想要做什么？", index_user->phone);
+    printf("您想要做什么？\n");
     printf("1. 查看个人信息\n");
     printf("2. 修改密码\n");
     printf("3. 查看中奖信息\n");
     printf("4. 购买彩票\n");
     printf("5. 注销\n");
+    scanf("%d", &op);
     switch(op){
         case(1): {
-            printf("id号：%d\n电话号码: %d\n剩余金额: %d\n", index_user->id, index_user->phone, index_user->money);
+            printf("Id号\t%d\n电话号码\t%d\n剩余金额\t%d\n", index_user->id, index_user->phone, index_user->money);
             break;
         }
         case(2): {
             printf("请输入新密码");
             int new_pw, confrim_pw;
-            scanf("%d\n", &new_pw);
+            scanf("%d", &new_pw);
             printf("请再次输入一次");
-            scanf("%d\n", &confrim_pw);
+            scanf("%d", &confrim_pw);
             if(new_pw == confrim_pw){
                 printf("修改成功");
                 index_user->pw = new_pw;
@@ -236,4 +235,5 @@ void commen_user(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p ini
             return;
         }
     }
+    return;
 }
