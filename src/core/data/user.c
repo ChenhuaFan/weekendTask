@@ -68,7 +68,20 @@ user_t_p insert_new_user(user_t_p user) {
 }
 
 //用户读写
+
 void user_write(user_t_p users) {
     user_t_p p = users;
-    FILE *w = fopen
+    FILE *w =fopen("users.txt","w");
+    if(w==NULL)
+    {
+        printf("打开文件失败!");
+        return; 
+    }
+    while(p)
+    {
+        fprintf(w,"%d %d %d %d\n", p->id, p->phone, p->pw, p->money);
+        p=p->next;
+    }
+    fprintf(w,"\n");
+    fclose(w);
 }

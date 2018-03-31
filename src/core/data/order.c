@@ -86,7 +86,7 @@ void order_write(order_t_p order)
     }
     while(p)
     {
-        fprintf(w,"%d %d %d %d %d %d", p->user_id, p->ticket_id, p->amount, p->type, p->status, p->code);
+        fprintf(w,"%d %d %d %d %d %d\n", p->user_id, p->ticket_id, p->amount, p->type, p->status, p->code);
         p=p->next;
     }
     fprintf(w,"\n");
