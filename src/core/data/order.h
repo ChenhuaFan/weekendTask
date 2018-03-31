@@ -37,4 +37,4 @@ order_t_p insert_new_order(order_t_p order);
 
 // 订单读写
 void order_write(order_t_p order);
-order_t_p order_read(order_t_p order);
+void order_read(order_t_p order);

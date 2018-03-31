@@ -93,7 +93,7 @@ void order_write(order_t_p order)
     fclose(w);
 }
 
-order_t_p order_read(order_t_p order)
+void order_read(order_t_p order)
 {
     
 }
