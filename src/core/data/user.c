@@ -43,17 +43,14 @@ key_t get_last_user_Id(user_t_p users)
 
 //根据手机号查找用户
 user_t_p get_user_by_phone(user_t_p users, phone_t phone) {
-    user_t_p p = users;
-    while(p->next != NULL || p->phone != phone) {
-        p=p->next;
+    user_t_p P = users; 
+    while (P != NULL) {
+        if(P->phone == phone) {
+            return P;
+        } else {
+            P = P->next;
+        }
     }
-    if(p->phone == phone) {
-        return p;
-    }
-    if(p->next == NULL) {
-        printf("找不到该用户\n");
-        return NULL;
-    }  
     return NULL;
 }
 
@@ -115,7 +112,6 @@ void user_write(user_t_p users) {
         fprintf(w,"%d %d %d %d\n", p->id, p->phone, p->pw, p->money);
         p=p->next;
     }
-    fprintf(w,"\n");
     fclose(w);
 }
 

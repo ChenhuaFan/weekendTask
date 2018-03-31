@@ -79,7 +79,7 @@ void ticket_write(ticket_t_p tickets) {
     }
     while(p)
     {
-       fprintf(w,"%d %d %d %d %d %d %d",p->id, p->name, p->amount, p->type, p->price, p->status, p->time); 
+       fprintf(w,"%d %d %d %d %d %d %d\n",p->id, p->name, p->amount, p->type, p->price, p->status, p->time); 
         p=p->next;
     }
     fprintf(w,"\n");

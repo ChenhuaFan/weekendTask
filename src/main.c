@@ -31,13 +31,34 @@ int main(int argc, char* argv[])
     ticket_read(init_tickets);
     order_read(init_order);
     user_read(init_users);
+    //test print list
+    user_t_p i = init_users;
+    ticket_t_p j = init_tickets;
+    order_t_p k = init_order;
+    while(i->next != NULL)
+    {
+        printf("\t%d \t%d \t%d\n", i->id, i->phone, i->pw);
+        i = i->next;
+    }
+    printf("--\n");
+    while(j->next != NULL)
+    {
+        printf("\t%d \t%d \t%d\n", j->id, j->name, j->amount);
+        j = j->next;
+    }
+    printf("--\n");
+    while(k->next != NULL)
+    {
+        printf("\t%d \t%d \t%d\n", k->user_id, k->ticket_id, k->amount);
+        k = k->next;
+    }
     // 主进程
     while(1)
     {
-        printf("welcome! 你想做什么？\n");
-        printf("1. 注册");
-        printf("2. 登录");
-        printf("3. 任意键退出");
+        printf("\nwelcome! 你想做什么？\n");
+        printf("1. 注册\n");
+        printf("2. 登录\n");
+        printf("3. 任意键退出\n");
         scanf("%d", &op);
             switch(op)
             {
@@ -52,9 +73,9 @@ int main(int argc, char* argv[])
             default: {
                 // programe exit point
                 // 保存链表到文件
-                ticket_write(init_tickets);
-                order_write(init_order);
-                user_write(init_users);
+                ticket_write(init_tickets->next);
+                order_write(init_order->next);
+                user_write(init_users->next);
                 return 0;
             }
         }
@@ -69,9 +90,14 @@ void registe(user_t_p init_users, user_t_p index_user)
     index_user = insert_new_user(init_users);
     printf("欢迎加入，请输入 电话 密码 以注册\n");
     scanf("%d %d", &phone, &pw);
+    printf("%p\n", index_user);
     user_t_p temp = get_user_by_phone(init_users, phone);
+    if(temp == NULL) {
+        printf("NULL POINTER!");
+    }
     if(temp == NULL){
         // 没有注册过
+        printf("%p | %p\n", index_user, temp);
         index_user->id = (get_last_user_Id(init_users) + 1);
         index_user->phone = phone;
         index_user->pw = pw;
