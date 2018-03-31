@@ -8,6 +8,7 @@ typedef int type_t;
 typedef int price_t;
 typedef int status_t;
 typedef int my_time_t;
+typedef int right_code;
 
 // 主要结构定义
 typedef struct __ticket__
@@ -19,6 +20,7 @@ typedef struct __ticket__
     price_t price;
     status_t status;
     my_time_t time;
+    right_code code;
     struct __ticket__ *next;
 }ticket_t, *ticket_t_p;
 
