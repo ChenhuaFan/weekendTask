@@ -95,7 +95,6 @@ void order_write(order_t_p order)
 
 void order_read(order_t_p order)
 {
-    // printf("***");
     int user_id,ticket_id,amount,type,status,code;
     order_t_p p = order;
     FILE *r = fopen("order.txt","r");
@@ -105,9 +104,7 @@ void order_read(order_t_p order)
     }
     while(fscanf(r,"%d %d %d %d %d %d\n",&user_id, &ticket_id, &amount, &type, &status, &code)!=EOF)
     {  
-        p=(order_t_p)malloc(sizeof(order_t));
-        p->next = order;
-        printf("%d\n",user_id);
+        p = insert_new_order(order);
         p->user_id=user_id;
         p->ticket_id=ticket_id;
         p->amount=amount;
@@ -115,5 +112,4 @@ void order_read(order_t_p order)
         p->status=status;
         p->code=code;
     }
-    // p->next=NULL;
 }

@@ -18,6 +18,9 @@ int main(int args, char *argv[]) {
     order_write(order_list);*/
     
     order_read(order_list);
-    printf("%d\n",order_list->next->ticket_id);
+    printf("%d\n",order_list->ticket_id);
+    printf("%d\n",order_list->next->next->next->next->ticket_id);
+    // printf("%d\n",order_list->next->next->ticket_id);
+
     return 0;
 }
