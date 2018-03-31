@@ -66,3 +66,9 @@ user_t_p insert_new_user(user_t_p user) {
     user->next = newuser;
     return newuser;
 }
+
+//用户读写
+void user_write(user_t_p users) {
+    user_t_p p = users;
+    FILE *w = fopen
+}

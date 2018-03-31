@@ -57,3 +57,20 @@ ticket_t_p insert_new_ticket(ticket_t_p tickets)
     Tmp->next = NULL;
     return (ticket_t_p)Tmp;
 }
+
+void ticket_write(ticket_t_p tickets) {
+    ticket_t_p p = tickets;
+    FILE *w = fopen("tickets.txt","w");
+    if(w==NULL)
+    {
+        printf("打开文件失败!");
+        return; 
+    }
+    while(p)
+    {
+       fprintf(w,"%d %d %d %d %d %d %d",p->id, p->name, p->amount, p->type, p->price, p->status, p->time); 
+        p=p->next;
+    }
+    fprintf(w,"\n");
+    fclose(w);
+}
