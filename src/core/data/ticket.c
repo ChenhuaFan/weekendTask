@@ -32,6 +32,17 @@ ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id)
     return P;
 }
 
+// 通过type来选择彩票
+ticket_t_p get_ticket_by_type(ticket_t_p tickets, type_t type)
+{
+    ticket_t_p P = tickets; 
+    int val = 0; 
+    while (P != NULL && P->type != type) {
+        P = P->next;
+    }
+    return P;
+}
+
 key_t delete_ticket_by_id(ticket_t_p tickets, key_t id)
 {
     ticket_t_p P = tickets;    
