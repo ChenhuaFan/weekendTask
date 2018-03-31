@@ -35,6 +35,6 @@ ticket_key_t delete_order_by_ticket_id(order_t_p order, ticket_key_t ticket_id);
 // 添加一个新的订单
 order_t_p insert_new_order(order_t_p order);
 
-// io
-// void write(order_t_p order);
-// order_t_p read(void);
+// 订单读写
+void order_write(order_t_p order);
+order_t_p order_read(order_t_p order);

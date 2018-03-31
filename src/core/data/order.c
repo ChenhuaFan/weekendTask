@@ -73,3 +73,27 @@ order_t_p insert_new_order(order_t_p order)
     Tmp->next = NULL;
     return (order_t_p)Tmp;
 }
+
+// 订单读写
+void order_write(order_t_p order)
+{
+    order_t_p p = order;
+    FILE *w =fopen("order.txt","w");
+    if(w==NULL)
+    {
+        printf("打开文件失败!");
+        return; 
+    }
+    while(p)
+    {
+        fprintf(w,"%d %d %d %d %d %d", p->user_id, p->ticket_id, p->amount, p->type, p->status, p->code);
+        p=p->next;
+    }
+    fprintf(w,"\n");
+    fclose(w);
+}
+
+order_t_p order_read(order_t_p order)
+{
+    
+}

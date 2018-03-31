@@ -34,6 +34,8 @@ void ticket_test()
     printf("%p | %d | %p\n\n", t_index, t_index->id, t_index->next);
 
     show(tickets);
+
+    order_write(tickets);
 }
 
 int main(int argc, char* argv[])

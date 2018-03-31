@@ -31,5 +31,5 @@ key_t delete_user_by_id(user_t_p users, key_t id);
 user_t_p insert_new_user(user_t_p users);
 
 // io
-// void write(user_t_p users);
-// user_t read(void);
+void user_write(user_t_p users);
+user_t_p user_read(user_t_p users);

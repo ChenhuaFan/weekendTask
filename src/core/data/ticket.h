@@ -38,5 +38,5 @@ key_t delete_ticket_by_id(ticket_t_p tickets, key_t id);
 ticket_t_p insert_new_ticket(ticket_t_p tickets);
 
 // io
-// void write(ticket_t_p tickets);
-// ticket_t_p read(void);
+void ticket_write(ticket_t_p tickets);
+ticket_t_p ticket_read(ticket_t_p tickets);
