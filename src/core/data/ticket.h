@@ -1,7 +1,7 @@
 /*
 对于彩票链表的相关定义
 */
-typedef int uid_t;
+typedef int key_t;
 typedef int name_t;
 typedef int amount_t;
 typedef int type_t;
@@ -12,7 +12,7 @@ typedef int time_t;
 // 主要结构定义
 typedef struct __ticket__
 {
-    uid_t id;
+    key_t id;
     name_t name;
     amount_t amount;
     type_t type;
@@ -29,10 +29,10 @@ ticket_t_p tickets;
 ticket_t_p create_tickets(void);
 
 // 通过彩票ID 得到彩票
-ticket_t_p get_ticket_by_id(ticket_t_p *tickets, uid_t id);
+ticket_t_p get_ticket_by_id(ticket_t_p *tickets, key_t id);
 
 // 通过彩票ID 删除
-uid_t delete_ticket_by_id(ticket_t_p *tickets, uid_t id);
+key_t delete_ticket_by_id(ticket_t_p *tickets, key_t id);
 
 // 添加一个新的彩票
 ticket_t_p insert_new_ticket(ticket_t_p *tickets);

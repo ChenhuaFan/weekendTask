@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include "./core/data/ticket.c"
 
-int mian(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     printf("hello world!");
-
+    
     return 0;
 }
