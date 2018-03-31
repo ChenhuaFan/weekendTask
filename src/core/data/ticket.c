@@ -22,9 +22,9 @@ ticket_t_p create_tickets(void)
     return temp_node;
 }
 
-ticket_t_p get_ticket_by_id(ticket_t_p *tickets, id_t id);
+ticket_t_p get_ticket_by_id(ticket_t_p* tickets, uid_t id);
 {
-    while(tickets->next != NULL)
+    while(*tickets->next != NULL)
     {
         if(tickets->id == id) 
         {
@@ -38,12 +38,12 @@ ticket_t_p get_ticket_by_id(ticket_t_p *tickets, id_t id);
     }
 }
 
-id_t delete_ticket_by_id(ticket_t_p *tickets, id_t id)
+uid_t delete_ticket_by_id(ticket_t_p* tickets, uid_t id)
 {
     ticket_t_p temp_node = NULL;
-    while(tickets->next != NULL)
+    while(*tickets->next != NULL)
     {
-        if(tickets->next->id == id)
+        if(*tickets->next->id == id)
         {
             // free next指针指向的节点
             temp_node = tickets->next->next;
@@ -55,7 +55,7 @@ id_t delete_ticket_by_id(ticket_t_p *tickets, id_t id)
     // 返回错误code
 }
 
-ticket_t_p insert_new_ticket(ticket_t_p *tickets)
+ticket_t_p insert_new_ticket(ticket_t_p* tickets)
 {
     while(1)
     {
