@@ -121,11 +121,24 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
     scanf("%d", &op);
     switch(op){
         case(1): {
-            
+            index_tickets = insert_new_ticket(init_tickets);
+            printf("请输入您想添加的彩票的信息");
+            printf("名字?\n");
+            scanf("%d", &(index_tickets->name));
+            printf("发行数量?\n");
+            scanf("%d", &(index_tickets->amount)); 
+            printf("种类?\n");
+            scanf("%d", &(index_tickets->type)); 
+            printf("价格?\n");
+            scanf("%d", &(index_tickets->price));
+            printf("状态?\n");
+            scanf("%d", &(index_tickets->status));
+            index_tickets->time = 0;
+            printf("恭喜，添加成功!");
             break;
         }
         case(2): {
-
+            index_tickets = get_ticket_by_id();
             break;
         }
         case(3): {
@@ -137,11 +150,12 @@ void admin(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p init_user
             break;
         }
         case(5): {
-
+            
             break;
         }
         case(6): {
-
+            index_user = NULL;
+            return;
             break;
         }
         default: {
@@ -162,23 +176,32 @@ void commen_user(ticket_t_p init_tickets, ticket_t_p index_tickets, user_t_p ini
     printf("5. 注销\n");
     switch(op){
         case(1): {
-
+            printf("id号：%d\n电话号码: %d\n剩余金额: %d\n", index_user->id, index_user->phone, index_user->money);
             break;
         }
         case(2): {
-
+            printf("请输入新密码");
+            int new_pw, confrim_pw;
+            scanf("%d\n", &new_pw);
+            printf("请再次输入一次");
+            scanf("%d\n", &confrim_pw);
+            if(new_pw == confrim_pw){
+                printf("修改成功");
+                index_user->pw = new_pw;
+            }
             break;
         }
         case(3): {
-
+            // 查看order中的信息.
             break;
         }
         case(4): {
-
+            // 在order中添加节点，并修改彩票类型
             break;
         }
         case(5): {
-
+            index_user = NULL;
+            return;
             break;
         }
         default: {
