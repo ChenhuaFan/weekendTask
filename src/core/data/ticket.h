@@ -7,7 +7,7 @@ typedef int amount_t;
 typedef int type_t;
 typedef int price_t;
 typedef int status_t;
-typedef int time_t;
+typedef int my_time_t;
 
 // 主要结构定义
 typedef struct __ticket__
@@ -18,7 +18,7 @@ typedef struct __ticket__
     type_t type;
     price_t price;
     status_t status;
-    time_t time;
+    my_time_t time;
     struct __ticket__ *next;
 }ticket_t, *ticket_t_p;
 
