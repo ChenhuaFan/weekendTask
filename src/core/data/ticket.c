@@ -24,55 +24,36 @@ ticket_t_p create_tickets(void)
 
 ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id)
 {
-    while(tickets->next != NULL)
-    {
-        if(tickets->id == id) 
-        {
-            return tickets;
-        } 
-        else 
-        {
-            // 返回错误code（在其他的资源文件中定义）
-        }
-        tickets = tickets->next;
+    ticket_t_p P = tickets; 
+    int val = 0; 
+    while (P != NULL && P->id != id) {
+        P = P->next;
     }
-    return NULL;
+    return P;
 }
 
 key_t delete_ticket_by_id(ticket_t_p tickets, key_t id)
 {
-    ticket_t_p temp_node = NULL;
-    while(tickets->next != NULL)
-    {
-        if(tickets->next->id == id)
-        {
-            // free next指针指向的节点
-            temp_node = tickets->next->next;
-            free(tickets->next);
-            tickets->next = temp_node;
-        }
-        tickets = tickets->next;
+    ticket_t_p P = tickets;    
+    while (P != NULL && P->id != id) {
+        P = P->next;
     }
-    // 返回错误code
-    return -1;
+    ticket_t_p Tmp = P->next;    
+    P->next = Tmp->next;    
+    free(Tmp);    
+    Tmp = NULL;    
+    return id;
 }
 
 ticket_t_p insert_new_ticket(ticket_t_p tickets)
 {
-    while(1)
+    ticket_t_p P = tickets;
+    while (P->next != NULL)
     {
-        if(tickets->next == NULL)
-        {
-            tickets->next = (ticket_t_p)malloc(sizeof(ticket_t));  
-            if (tickets->next == NULL)
-            {
-                // 返回错误code（在其他的资源文件中定义）
-            }
-            else
-            {
-                tickets->next = NULL;
-            }
-            return tickets->next;
-        }
+        P = P->next;
     }
+    ticket_t_p Tmp = (ticket_t_p)malloc(sizeof(ticket_t));
+    P->next = Tmp;
+    Tmp->next = NULL;
+    return (ticket_t_p)Tmp;
 }
