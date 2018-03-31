@@ -29,14 +29,14 @@ ticket_t_p tickets;
 ticket_t_p create_tickets(void);
 
 // 通过彩票ID 得到彩票
-ticket_t_p get_ticket_by_id(ticket_t_p *tickets, key_t id);
+ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id);
 
 // 通过彩票ID 删除
-key_t delete_ticket_by_id(ticket_t_p *tickets, key_t id);
+key_t delete_ticket_by_id(ticket_t_p tickets, key_t id);
 
 // 添加一个新的彩票
-ticket_t_p insert_new_ticket(ticket_t_p *tickets);
+ticket_t_p insert_new_ticket(ticket_t_p tickets);
 
 // io
-// void write(ticket_t_p *tickets);
+// void write(ticket_t_p tickets);
 // ticket_t_p read(void);

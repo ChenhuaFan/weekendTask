@@ -22,11 +22,11 @@ ticket_t_p create_tickets(void)
     return temp_node;
 }
 
-ticket_t_p get_ticket_by_id(ticket_t_p* tickets, key_t id)
+ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id)
 {
-    while((*tickets)->next != NULL)
+    while(tickets->next != NULL)
     {
-        if((*tickets)->id == id) 
+        if(tickets->id == id) 
         {
             return *tickets;
         } 
@@ -34,43 +34,43 @@ ticket_t_p get_ticket_by_id(ticket_t_p* tickets, key_t id)
         {
             // 返回错误code（在其他的资源文件中定义）
         }
-        (*tickets) = (*tickets)->next;
+        tickets = tickets->next;
     }
 }
 
-key_t delete_ticket_by_id(ticket_t_p* tickets, key_t id)
+key_t delete_ticket_by_id(ticket_t_p tickets, key_t id)
 {
     ticket_t_p temp_node = NULL;
-    while((*tickets)->next != NULL)
+    while(tickets->next != NULL)
     {
-        if((*tickets)->next->id == id)
+        if(tickets->next->id == id)
         {
             // free next指针指向的节点
-            temp_node = (*tickets)->next->next;
-            free((*tickets)->next);
-            (*tickets)->next = temp_node;
+            temp_node = tickets->next->next;
+            free(tickets->next);
+            tickets->next = temp_node;
         }
-        (*tickets) = (*tickets)->next;
+        tickets = tickets->next;
     }
     // 返回错误code
 }
 
-ticket_t_p insert_new_ticket(ticket_t_p* tickets)
+ticket_t_p insert_new_ticket(ticket_t_p tickets)
 {
     while(1)
     {
-        if((*tickets)->next == NULL)
+        if(tickets->next == NULL)
         {
-            (*tickets)->next = (ticket_t_p)malloc(sizeof(ticket_t));  
-            if ((*tickets)->next == NULL)
+            tickets->next = (ticket_t_p)malloc(sizeof(ticket_t));  
+            if (tickets->next == NULL)
             {
                 // 返回错误code（在其他的资源文件中定义）
             }
             else
             {
-                (*tickets)->next = NULL;
+                tickets->next = NULL;
             }
-            return (*tickets)->next;
+            return tickets->next;
         }
     }
 }

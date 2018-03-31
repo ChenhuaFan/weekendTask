@@ -18,7 +18,7 @@ typedef struct __order__
     type_t type;
     status_t status;
     code_t code;
-    struct __ticket__ *next;
+    struct __order__ *next;
 }order_t, *order_t_p;
 
 // 主要方法定义
@@ -26,15 +26,15 @@ typedef struct __order__
 order_t_p create_order(void);
 
 // 通过ID 得到订单记录
-order_t_p get_order_by_id(order_t_p *order, user_key_t user_id, ticket_key_t ticket_id);
+order_t_p get_order_by_id(order_t_p order, user_key_t user_id, ticket_key_t ticket_id);
 
 // 通过ID 删除
-user_key_t delete_order_by_user_id(order_t_p *order, user_key_t user_id);
-ticket_key_t delete_order_by_ticket_id(order_t_p *order, ticket_key_t ticket_id);
+user_key_t delete_order_by_user_id(order_t_p order, user_key_t user_id);
+ticket_key_t delete_order_by_ticket_id(order_t_p order, ticket_key_t ticket_id);
 
 // 添加一个新的订单
-order_t_p insert_new_order(order_t_p *order);
+order_t_p insert_new_order(order_t_p order);
 
 // io
-// void write(order_t_p *order);
+// void write(order_t_p order);
 // order_t_p read(void);

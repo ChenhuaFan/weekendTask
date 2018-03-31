@@ -10,7 +10,7 @@
 order_t_p create_order(void)
 {
     order_t_p temp_node = NULL;
-    temp_node = (order_t_p)mallocmalloc(sizeof(order_t));
+    temp_node = (order_t_p)malloc(sizeof(order_t));
     if (temp_node == NULL)
     {
         // 返回错误code
@@ -23,72 +23,75 @@ order_t_p create_order(void)
 }
 
 // 通过ID 得到订单记录
-order_t_p get_order_by_id(order_t_p *order, user_key_t user_id, ticket_key_t ticket_id)
+order_t_p get_order_by_id(order_t_p order, user_key_t user_id, ticket_key_t ticket_id)
 {
-    while((*order)->next != NULL)
+    while(order->next != NULL)
     {
-        if((*order)->user_id == user_id && (*order)->ticket_id == ticket_id)
+        if(order->user_id == user_id && order->ticket_id == ticket_id)
         {
-            return *order;
+            return order;
         }
         else
         {
             // 返回错误code
         }
-        (*order) = (*order)->next;
+        order = (order_t_p)order->next;
     }
+    return NULL;
 }
 
 // 通过ID 删除
-user_key_t delete_order_by_user_id(order_t_p *order, user_key_t user_id)
+user_key_t delete_order_by_user_id(order_t_p order, user_key_t user_id)
 {
-    while((*order)->next != NULL)
+    while(order->next != NULL)
     {
-        if((*order)->user_id == user_id)
+        if(order->user_id == user_id)
         {
-            return *order;
+            return user_id;
         }
         else
         {
             // 返回错误code
         }
-        (*order) = (*order)->next;
+        order = (order_t_p)order->next;
     }
+    return -1;
 }
 
-ticket_key_t delete_order_by_ticket_id(order_t_p *order, ticket_key_t ticket_id)
+ticket_key_t delete_order_by_ticket_id(order_t_p order, ticket_key_t ticket_id)
 {
-    while((*order)->next != NULL)
+    while(order->next != NULL)
     {
-        if((*order)->ticket_id == ticket_id)
+        if(order->ticket_id == ticket_id)
         {
-            return *order;
+            return ticket_id;
         }
         else
         {
             // 返回错误code
         }
-        (*order) = (*order)->next;
+        order = (order_t_p)order->next;
     }
+    return -1;
 }
 
 // 添加一个新的订单
-order_t_p insert_new_order(order_t_p *order)
+order_t_p insert_new_order(order_t_p order)
 {
     while(1)
     {
-        if((*order)->next == NULL)
+        if(order->next == NULL)
         {
-            (*order)->next = (order_t_p)malloc(sizeof(order_t));  
-            if ((*order)->next == NULL)
+            order->next = (order_t_p)malloc(sizeof(order_t));  
+            if (order->next == NULL)
             {
                 // 返回错误code（在其他的资源文件中定义）
             }
             else
             {
-                (*order)->next = NULL;
+                order->next = NULL;
             }
-            return (*order)->next;
+            return (order_t_p)order->next;
         }
     }
 }
