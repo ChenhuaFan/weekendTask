@@ -21,14 +21,17 @@ user_t_p create_users(void) {
 //根据Id查找用户
 user_t_p get_user_by_id(user_t_p users, key_t id) {
     user_t_p p = users;
-    while(p->next != NULL) {
-        if(p->id == id) {
+    do {
+       if(p->id == id) {
+            printf("查找成功\n");
             return p;
         } else {
-            printf("找不到该用户");
+            //printf("找不到该用户\n");
         }
         p=p->next;
     }
+    while(p->next != NULL);
+        
     return NULL;
 }
 
@@ -52,8 +55,8 @@ key_t delete_user_by_id(user_t_p users, key_t id) {
 }
 
 //添加用户
-user_t_p insert_new_user(user_t_p users) {
-    user_t_p newuser,user;
+user_t_p insert_new_user(user_t_p user) {
+    user_t_p newuser;
     newuser = (user_t_p)malloc(sizeof(user_t));
     if(newuser == NULL) {
         printf("CREATE FAILED!");
