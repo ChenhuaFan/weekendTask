@@ -103,7 +103,7 @@ void order_read(order_t_p order)
         return;
     }
     while(fscanf(r,"%d %d %d %d %d %d\n",&user_id, &ticket_id, &amount, &type, &status, &code)!=EOF)
-    {  
+    {
         p = insert_new_order(order);
         p->user_id=user_id;
         p->ticket_id=ticket_id;
