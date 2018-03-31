@@ -18,6 +18,19 @@ user_t_p create_users(void) {
     return user_node;
 }
 
+// 查找特定账号密码的用户
+user_t_p user_auth(user_t_p users, phone_t phone, pw_t pw) {
+    user_t_p p = users;
+    do {
+       if(p->phone == phone && p->pw == pw) {
+            return p;
+        }
+        p=p->next;
+    }
+    while(p->next != NULL);
+    return NULL;
+}
+
 //根据Id查找用户
 user_t_p get_user_by_id(user_t_p users, key_t id) {
     user_t_p p = users;
