@@ -28,7 +28,7 @@ ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id)
     {
         if(tickets->id == id) 
         {
-            return *tickets;
+            return tickets;
         } 
         else 
         {
@@ -36,6 +36,7 @@ ticket_t_p get_ticket_by_id(ticket_t_p tickets, key_t id)
         }
         tickets = tickets->next;
     }
+    return NULL;
 }
 
 key_t delete_ticket_by_id(ticket_t_p tickets, key_t id)
@@ -53,6 +54,7 @@ key_t delete_ticket_by_id(ticket_t_p tickets, key_t id)
         tickets = tickets->next;
     }
     // 返回错误code
+    return -1;
 }
 
 ticket_t_p insert_new_ticket(ticket_t_p tickets)
