@@ -22,14 +22,14 @@ typedef struct __user__
 user_t_p create_users(void);
 
 // 通过用户ID 得到用户
-user_t_p get_user_by_id(user_t_p *users, uid_t id);
+user_t_p get_user_by_id(user_t_p users, uid_t id);
 
 // 通过用户ID 删除用户
-uid_t delete_user_by_id(user_t_p *users, uid_t id);
+uid_t delete_user_by_id(user_t_p users, uid_t id);
 
 // 添加一个新的用户
-user_t_p insert_new_user(user_t_p *users);
+user_t_p insert_new_user(user_t_p users);
 
 // io
-// void write(user_t_p *users);
+// void write(user_t_p users);
 // user_t read(void);
