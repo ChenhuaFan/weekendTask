@@ -95,5 +95,25 @@ void order_write(order_t_p order)
 
 void order_read(order_t_p order)
 {
-    
+    // printf("***");
+    int user_id,ticket_id,amount,type,status,code;
+    order_t_p p = order;
+    FILE *r = fopen("order.txt","r");
+    if(r == NULL) {
+        printf("打开文件失败！");
+        return;
+    }
+    while(fscanf(r,"%d %d %d %d %d %d\n",&user_id, &ticket_id, &amount, &type, &status, &code)!=EOF)
+    {  
+        p=(order_t_p)malloc(sizeof(order_t));
+        p->next = order;
+        printf("%d\n",user_id);
+        p->user_id=user_id;
+        p->ticket_id=ticket_id;
+        p->amount=amount;
+        p->type=type;
+        p->status=status;
+        p->code=code;
+    }
+    // p->next=NULL;
 }
