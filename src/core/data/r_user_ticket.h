@@ -23,18 +23,18 @@ typedef struct __ticket__
 
 // 主要方法定义
 // 创建新的订单链表
-r_ticket_user_t create_tickets(void);
+r_ticket_user_t_p create_tickets(void);
 
 // 通过ID 得到订单记录
-r_ticket_user_t get_ticket_by_id(user_id_t user_id, ticket_id_t ticket_id);
+r_ticket_user_t_p get_ticket_by_id(user_id_t user_id, ticket_id_t ticket_id);
 
 // 通过ID 删除
 user_id_t delete_ticket_by_user_id(user_id_t user_id);
 ticket_id_t delete_ticket_by_ticket_id(ticket_id_t ticket_id);
 
 // 添加一个新的订单
-r_ticket_user_t insert_new_ticket(void);
+r_ticket_user_t_p insert_new_ticket(void);
 
 // io
 void write(r_ticket_user_t r_ticket_user);
-r_ticket_user_t read(void);
+r_ticket_user_t_p read(void);

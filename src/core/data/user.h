@@ -19,16 +19,16 @@ typedef struct __user__
 
 // 主要方法定义
 // 创建新的用户链表
-user_t create_users(void);
+user_t_p create_users(void);
 
 // 通过用户ID 得到用户
-user_t get_user_by_id(id_t id);
+user_t_p get_user_by_id(id_t id);
 
 // 通过用户ID 删除用户
 id_t delete_user_by_id(id_t id);
 
 // 添加一个新的用户
-user_t insert_new_user(void);
+user_t_p insert_new_user(void);
 
 // io
 void write(user_t user);
