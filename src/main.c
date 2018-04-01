@@ -43,23 +43,23 @@ int main(int argc, char* argv[])
     user_t_p i = init_users;
     ticket_t_p j = init_tickets;
     order_t_p k = init_order;
-    while(i->next != NULL)
-    {
-        printf("\t%d \t%d \t%d\n", i->id, i->phone, i->pw);
-        i = i->next;
-    }
-    printf("--\n");
-    while(j->next != NULL)
-    {
-        printf("\t%d \t%d \t%d\n", j->id, j->name, j->amount);
-        j = j->next;
-    }
-    printf("--\n");
-    while(k->next != NULL)
-    {
-        printf("\t%d \t%d \t%d\n", k->user_id, k->ticket_id, k->amount);
-        k = k->next;
-    }
+    // while(i->next != NULL)
+    // {
+    //     printf("\t%d \t%d \t%d\n", i->id, i->phone, i->pw);
+    //     i = i->next;
+    // }
+    // printf("--\n");
+    // while(j->next != NULL)
+    // {
+    //     printf("\t%d \t%d \t%d\n", j->id, j->name, j->amount);
+    //     j = j->next;
+    // }
+    // printf("--\n");
+    // while(k->next != NULL)
+    // {
+    //     printf("\t%d \t%d \t%d\n", k->user_id, k->ticket_id, k->amount);
+    //     k = k->next;
+    // }
     // 主进程
     while(1)
     {
