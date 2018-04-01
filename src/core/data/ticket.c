@@ -88,14 +88,14 @@ void ticket_write(ticket_t_p tickets) {
 
 void ticket_read(ticket_t_p tickets)
 {
-    int id,name,amount,type,price,status,time;
+    int id,name,amount,type,price,status,time, code;
     ticket_t_p p = tickets;
     FILE *r = fopen("tickets.txt","r");
     if(r == NULL) {
         printf("打开文件失败！");
         return;
     }
-    while(fscanf(r,"%d %d %d %d %d %d %d\n",&id, &name, &amount, &type, &price, &status, &time)!=EOF)
+    while(fscanf(r,"%d %d %d %d %d %d %d %d\n",&id, &name, &amount, &type, &price, &status, &time, &code)!=EOF)
     {  
         p = insert_new_ticket(tickets);
         p->id=id;
@@ -105,5 +105,6 @@ void ticket_read(ticket_t_p tickets)
         p->price=price;
         p->status=status;
         p->time=time;
+        p->code=code;
     }
 }
